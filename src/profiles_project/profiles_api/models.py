@@ -5,7 +5,7 @@ from django.contrib.auth.models import BaseUserManager
 
 
 class UserProfileManager(BaseUserManager):
-    """ Helps Django work woth our custom user model. """
+    """ Helps Django work with our custom user model. """
 
     def create_user(self,email, name,password=None):
         """Creates a new user profile object. """
@@ -38,9 +38,6 @@ class UserProfileManager(BaseUserManager):
 
 
         return user
-
-
-
 
 
 class UserProfile(AbstractBaseUser,PermissionsMixin):
