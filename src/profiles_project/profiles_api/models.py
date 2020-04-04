@@ -54,7 +54,7 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     REQUIRED_FIELDS = ['name']
 
     def get_full_name(self):
-        """Used to get a sers full name """
+        """Used to get a users full name """
 
 
         return self.name
@@ -65,6 +65,20 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
         return self.name
 
     def __str__(self):
-        """ Django uses this when needs to convert the object to a strinf"""
+        """ Django uses this when needs to convert the object to a string"""
 
         return self.email
+
+
+class ProfileFeedItems(models.Model):
+    """Profile status update"""
+
+    user_profile = models.ForeignKey('UserProfile', on_delete = models.CASCADE)
+
+    status_text = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        """return model as string"""
+
+        return self.status_text
